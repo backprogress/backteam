@@ -57,7 +57,7 @@ export function PostCreationForm() {
           <div className="space-y-2">
             {questions.map((question, index) => (
               <input
-                key={`${index}-${question}`}
+                key={index}
                 value={question}
                 onChange={(event) => updateQuestion(index, event.target.value)}
                 placeholder={`질문 ${index + 1}`}

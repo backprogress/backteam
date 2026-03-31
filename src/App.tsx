@@ -22,18 +22,26 @@ function App() {
 
   useEffect(() => {
     if (!supabase) return
+    const client = supabase
 
-    void supabase.auth.getSession().then(async ({ data }) => {
-      setSession(data.session)
-      if (data.session?.user.email) {
-        const loadedProfile = await ensureProfileFromEmail(data.session.user.id, data.session.user.email)
-        setProfile(loadedProfile)
+    const initializeSession = async () => {
+      try {
+        const { data } = await client.auth.getSession()
+        setSession(data.session)
+        if (data.session?.user.email) {
+          const loadedProfile = await ensureProfileFromEmail(data.session.user.id, data.session.user.email)
+          setProfile(loadedProfile)
+        }
+      } catch (error) {
+        setErrorMessage(error instanceof Error ? error.message : '세션 정보를 불러오지 못했습니다.')
       }
-    })
+    }
+
+    void initializeSession()
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+    } = client.auth.onAuthStateChange((_event, nextSession) => {
       setSession(nextSession)
     })
 

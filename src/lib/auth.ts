@@ -24,13 +24,26 @@ export function parseSchoolIdentity(email: string): {
 
   if (!match) return null
 
-  const [grade, classNumber, ...numberDigits] = match[2].split('').map(Number)
+  const studentToken = match[2]
+  if (studentToken.length !== 5) return null
+
+  const grade = Number(studentToken.slice(0, 1))
+  const classNumber = Number(studentToken.slice(1, 2))
+  const number = Number(studentToken.slice(2))
+
+  if (
+    Number.isNaN(grade) ||
+    Number.isNaN(classNumber) ||
+    Number.isNaN(number)
+  ) {
+    return null
+  }
 
   return {
     admissionYear: 2000 + Number(match[1]),
     grade,
     class: classNumber,
-    number: Number(numberDigits.join('')),
+    number,
     isTeacher,
   }
 }

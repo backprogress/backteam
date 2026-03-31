@@ -69,7 +69,7 @@ export const mockProfiles: Profile[] = [
     email: '26s20200@jh.ms.kr',
     grade: 2,
     class: 2,
-    number: 0,
+    number: 1,
     is_teacher: false,
     tech_stacks: ['react', 'typescript'],
   },

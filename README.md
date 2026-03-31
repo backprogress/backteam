@@ -24,4 +24,4 @@ VITE_SUPABASE_ANON_KEY=...
 - `src/lib`: Supabase 클라이언트 및 인증/프로필 파싱 로직
 - `src/data`: 화면 확인용 목 데이터
 - `supabase/schema.sql`: 요구 스키마 정의
-- `.github/workflows/deploy.yml` 및 `.github/deploy.yml`: GitHub Pages 배포 워크플로우
+- `.github/workflows/deploy.yml`: GitHub Pages 배포 워크플로우

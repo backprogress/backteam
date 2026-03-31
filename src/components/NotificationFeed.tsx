@@ -22,7 +22,7 @@ export function NotificationFeed({ initialNotifications }: NotificationFeedProps
       .subscribe()
 
     return () => {
-      void client.removeChannel(channel)
+      client.removeChannel(channel)
     }
   }, [])
 
