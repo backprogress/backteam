@@ -27,14 +27,16 @@ export function NotificationFeed({ initialNotifications }: NotificationFeedProps
   }, [])
 
   return (
-    <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-      <h2 className="mb-3 text-lg font-semibold text-slate-900">실시간 알림</h2>
+    <section className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
+      <h2 className="mb-3 text-lg font-semibold text-slate-900 dark:text-slate-100">실시간 알림</h2>
       <ul className="space-y-2">
         {notifications.map((notification) => (
           <li
             key={notification.id}
             className={`rounded-lg px-3 py-2 text-sm ${
-              notification.is_read ? 'bg-slate-50 text-slate-600' : 'bg-blue-50 text-blue-800'
+              notification.is_read
+                ? 'bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-400'
+                : 'bg-blue-50 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200'
             }`}
           >
             {notification.message}

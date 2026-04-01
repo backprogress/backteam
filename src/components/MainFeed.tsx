@@ -22,14 +22,14 @@ export function MainFeed({ posts }: MainFeedProps) {
 
   return (
     <section className="space-y-4">
-      <div className="rounded-xl border border-slate-200 bg-white p-4">
-        <p className="mb-2 text-sm font-semibold text-slate-700">기술 스택 필터</p>
+      <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4">
+        <p className="mb-2 text-sm font-semibold text-slate-700 dark:text-slate-300">기술 스택 필터</p>
         <div className="flex flex-wrap gap-2">
           <button
             type="button"
             onClick={() => setSelectedStack('all')}
             className={`rounded-full px-3 py-1 text-sm ${
-              selectedStack === 'all' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'
+              selectedStack === 'all' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
             }`}
           >
             전체
@@ -40,7 +40,7 @@ export function MainFeed({ posts }: MainFeedProps) {
               type="button"
               onClick={() => setSelectedStack(stack.key)}
               className={`rounded-full px-3 py-1 text-sm ${
-                selectedStack === stack.key ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'
+                selectedStack === stack.key ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
               }`}
             >
               {stack.icon} {stack.label}
@@ -51,16 +51,16 @@ export function MainFeed({ posts }: MainFeedProps) {
 
       <ul className="grid gap-4 md:grid-cols-2">
         {sortedPosts.map((post) => (
-          <li key={post.id} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-            <p className="mb-2 text-xs font-semibold text-blue-600">마감일 {post.deadline}</p>
-            <h3 className="mb-2 text-lg font-semibold text-slate-900">{post.title}</h3>
-            <p className="mb-4 text-sm text-slate-600">{post.content}</p>
+          <li key={post.id} className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
+            <p className="mb-2 text-xs font-semibold text-blue-600 dark:text-blue-400">마감일 {post.deadline}</p>
+            <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-slate-100">{post.title}</h3>
+            <p className="mb-4 text-sm text-slate-600 dark:text-slate-400">{post.content}</p>
             <div className="mb-3 flex flex-wrap gap-2">
               {post.tech_required.map((stack) => (
                 <TechBadge key={stack} stackKey={stack} />
               ))}
             </div>
-            <p className="text-sm text-slate-500">모집 인원: {post.recruitment_count}명</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400">모집 인원: {post.recruitment_count}명</p>
           </li>
         ))}
       </ul>
