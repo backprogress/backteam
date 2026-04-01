@@ -33,8 +33,8 @@ export function PostDetailPage() {
     setError('')
 
     // 필수 질문 답변 검사
-    const unanswered = post.custom_questions.filter((question) => !answers[question]?.trim())
-    if (unanswered.length > 0) {
+    const hasUnanswered = post.custom_questions.some((question) => !answers[question]?.trim())
+    if (hasUnanswered) {
       setError('모든 질문에 답변을 입력해주세요.')
       return
     }

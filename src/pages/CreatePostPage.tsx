@@ -43,6 +43,11 @@ export function CreatePostPage({ onPostCreated }: CreatePostPageProps) {
       setError('제목, 내용, 마감일을 모두 입력해주세요.')
       return
     }
+    // 마감일이 오늘 이전이면 오류 처리
+    if (new Date(deadline) < new Date(new Date().toDateString())) {
+      setError('마감일은 오늘 이후로 설정해주세요.')
+      return
+    }
     if (selectedTech.length === 0) {
       setError('기술 스택을 하나 이상 선택해주세요.')
       return
