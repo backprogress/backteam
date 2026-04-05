@@ -56,6 +56,7 @@ export async function signInWithGoogle() {
     provider: 'google',
     options: {
       queryParams: { hd: SCHOOL_DOMAIN },
+      redirectTo: 'https://backprogress.github.io/backteam'
     },
   })
 
